@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эльза Насырова — клинический психолог, доцент НИУ ВШЭ</title>
+<meta name="description" content="Эльза Насырова, клинический психолог с 25-летним опытом. Доцент департамента психологии НИУ ВШЭ. Психотерапия травмы и расстройств личности, TFP, транзактный анализ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%232b5bc4'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' fill='%23f2f6fd' text-anchor='middle'%3EЭ%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper: oklch(97.2% 0.008 240);
+  --sky: oklch(93% 0.024 240);
+  --hse: oklch(46% 0.155 262);
+  --hse-soft: oklch(58% 0.11 258);
+  --ink: oklch(25% 0.032 262);
+  --ink-soft: oklch(42% 0.028 260);
+  --ink-faint: oklch(55% 0.024 258);
+  --line: oklch(80% 0.03 250 / .7);
+  --glass: color-mix(in srgb, white 55%, transparent);
+  --glass-strong: color-mix(in srgb, white 74%, transparent);
+  --glass-border: color-mix(in srgb, white 70%, transparent);
+  --serif: 'Prata', 'Georgia', serif;
+  --sans: 'Golos Text', 'Segoe UI', sans-serif;
+  --s-xs: 8px; --s-sm: 16px; --s-md: 24px; --s-lg: 48px;
+  --r-lg: 28px; --r-md: 20px;
+  --wrap: 1160px;
+  --shadow: 0 12px 40px -8px oklch(35% 0.08 255 / .13), 0 2px 8px oklch(35% 0.08 255 / .05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+body{
+  overflow-x:clip;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:color-mix(in srgb, var(--hse) 18%, white);color:var(--hse)}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+/* ---------- ambient: голубое небо + «Кувшинки» Моне ---------- */
+.ambient{position:fixed;inset:0;z-index:-1;overflow:hidden;background:
+  radial-gradient(1100px 720px at 85% -10%, oklch(90% 0.045 245 / .8), transparent 60%),
+  radial-gradient(900px 640px at -12% 30%, oklch(93% 0.03 235 / .9), transparent 62%),
+  radial-gradient(1000px 800px at 55% 115%, oklch(91% 0.03 250 / .8), transparent 60%),
+  var(--paper);
+}
+.ambient::before{
+  content:'';position:absolute;inset:-12%;
+  background:url('img/art/monet-seine-sunset.jpg') center/cover no-repeat;
+  filter:blur(52px) saturate(1.05);
+  opacity:.30;
+}
+.ambient::after{
+  content:'';position:absolute;inset:-50%;
+  background:
+    radial-gradient(640px 640px at 30% 30%, oklch(82% 0.07 250 / .20), transparent 70%),
+    radial-gradient(740px 740px at 72% 68%, oklch(86% 0.05 230 / .24), transparent 70%);
+  animation:drift 38s ease-in-out infinite alternate;
+}
+@keyframes drift{
+  from{transform:translate(0,0) rotate(0deg)}
+  to{transform:translate(4%,3%) rotate(4deg)}
+}
+
+/* ---------- glass ---------- */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(22px) saturate(1.5);
+  -webkit-backdrop-filter:blur(22px) saturate(1.5);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow);
+}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- nav ---------- */
+header{position:fixed;top:14px;left:0;right:0;z-index:50;padding:0 clamp(12px,3vw,32px)}
+.nav{
+  max-width:var(--wrap);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s-sm);
+  padding:10px 12px 10px 24px;border-radius:100px;
+}
+.nav-name{font-family:var(--serif);font-size:18px;text-decoration:none;white-space:nowrap}
+.nav-name em{font-style:normal}
+.nav-links{display:flex;gap:clamp(10px,1.5vw,22px);list-style:none;align-items:center}
+.nav-links a{
+  text-decoration:none;font-size:14px;font-weight:500;color:var(--ink-soft);
+  letter-spacing:.02em;transition:color .25s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--hse)}
+.nav-cta{
+  text-decoration:none;font-size:14px;font-weight:600;color:white!important;
+  background:var(--hse);padding:10px 22px;border-radius:100px;white-space:nowrap;
+  transition:background .25s, transform .25s;
+}
+.nav-cta:hover{background:var(--hse-soft);transform:translateY(-1px)}
+@media (max-width:1080px){.nav-links li:not(.cta-li){display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  max-width:var(--wrap);margin:0 auto;
+  padding:clamp(92px,11vh,120px) clamp(16px,3vw,32px) clamp(36px,5vh,56px);
+}
+.hero-panel{
+  position:relative;border-radius:var(--r-lg);overflow:hidden;
+  display:grid;grid-template-columns:1.12fr .88fr;align-items:center;
+  gap:clamp(24px,4vw,64px);
+  padding:clamp(26px,3.6vw,52px);
+}
+.hero-panel::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:url('img/art/monet-seine-sunset.jpg') center 40%/cover no-repeat;
+  filter:blur(34px) saturate(1.1);opacity:.42;transform:scale(1.18);
+}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(36px,4.8vw,58px);
+  line-height:1.1;letter-spacing:-.01em;
+  margin-bottom:clamp(16px,2.6vh,26px);
+}
+.hero-lede{
+  font-size:clamp(16.5px,1.5vw,19px);line-height:1.65;color:var(--ink-soft);
+  max-width:33em;margin-bottom:clamp(26px,4vh,40px);
+}
+.hero-lede strong{color:var(--ink);font-weight:600}
+.hero-actions{display:flex;gap:var(--s-sm);flex-wrap:wrap;align-items:center}
+.btn{
+  text-decoration:none;font-weight:600;font-size:16px;
+  padding:15px 30px;border-radius:100px;display:inline-block;
+  transition:transform .25s, background .25s, border-color .25s, color .25s;
+}
+.btn-primary{background:var(--hse);color:white;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--hse-soft);transform:translateY(-2px)}
+.btn-ghost{
+  color:var(--ink);background:var(--glass-strong);
+  border:1px solid var(--glass-border);backdrop-filter:blur(12px);
+}
+.btn-ghost:hover{border-color:var(--hse);color:var(--hse)}
+
+.hero-figure{position:relative;justify-self:end;width:min(100%,372px)}
+.hero-figure img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 10%;
+  border-radius:var(--r-md);
+  border:1px solid var(--glass-border);
+  box-shadow:0 24px 60px -16px oklch(32% 0.08 255 / .3);
+}
+.hero-figure figcaption{
+  position:absolute;left:14px;right:14px;bottom:14px;
+  padding:12px 18px;border-radius:14px;
+  background:oklch(28% 0.03 260 / .45);
+  backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid oklch(100% 0 0 / .25);
+  font-size:13.5px;line-height:1.45;color:white;
+}
+.hero-figure figcaption b{font-weight:600}
+.hero-figure figcaption span{color:oklch(94% 0.01 240);display:block;font-size:12.5px}
+@media (max-width:860px){
+  .hero-panel{grid-template-columns:1fr}
+  .hero-figure{justify-self:center;width:min(100%,340px);order:-1}
+}
+
+/* ---------- stats: типографские колонки ---------- */
+.stats{
+  max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,3vw,32px);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);
+}
+.stat{border-top:1px solid var(--line);padding-top:clamp(14px,2vh,20px)}
+.stat-num{font-family:var(--serif);font-size:clamp(26px,2.8vw,38px);line-height:1.15;color:var(--hse);margin-bottom:6px}
+.stat-label{font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+@media (max-width:860px){.stats{grid-template-columns:1fr 1fr;gap:24px}}
+@media (max-width:440px){.stats{grid-template-columns:1fr}}
+
+/* ---------- sections ---------- */
+section{scroll-margin-top:86px}
+.sec{max-width:var(--wrap);margin:0 auto;padding:clamp(56px,9vh,110px) clamp(16px,3vw,32px)}
+.sec-head{margin-bottom:clamp(32px,5vh,56px)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1.15}
+.side-label{
+  font-family:var(--serif);font-weight:400;font-size:clamp(19px,1.9vw,23px);
+  color:var(--ink);margin-bottom:var(--s-sm);line-height:1.3;
+}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,80px)}
+.about-text p{max-width:58ch;color:var(--ink-soft)}
+.about-text p + p{margin-top:var(--s-md)}
+.about-text p strong{color:var(--ink);font-weight:600}
+.pull{
+  font-family:var(--serif);font-size:clamp(20px,2.1vw,26px);line-height:1.5;
+  color:var(--ink);max-width:24em;
+  margin-top:var(--s-lg);padding-top:var(--s-md);
+  border-top:1px solid var(--line);
+}
+.pull span{color:var(--hse)}
+.pull-author{
+  font-size:14px;color:var(--ink-faint);margin-top:10px;letter-spacing:.04em;
+}
+.plain-list{list-style:none}
+.plain-list li{
+  padding:12px 0;font-size:15px;color:var(--ink);
+  border-top:1px solid var(--line);line-height:1.5;
+}
+.plain-list li:last-child{border-bottom:1px solid var(--line)}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr}}
+
+/* specialization: стекло поверх «Кувшинок» */
+.spec-band{position:relative;overflow:clip}
+.spec-band::before{
+  content:'';position:absolute;inset:0;
+  background:url('img/art/monet-seine-sunset.jpg') center/cover no-repeat;
+  filter:blur(8px) saturate(1.05);transform:scale(1.06);
+}
+.spec-band::after{
+  content:'';position:absolute;inset:0;
+  background:oklch(30% 0.06 255 / .68);
+  backdrop-filter:blur(2px);
+}
+.spec-band .sec{position:relative;z-index:1}
+.spec-band h2{color:oklch(97% 0.008 240)}
+.spec-intro{color:oklch(88% 0.02 240);max-width:56ch;margin-bottom:clamp(32px,5vh,52px);font-size:clamp(16px,1.5vw,18px);line-height:1.7}
+.spec-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.5vw,20px)}
+.spec-item{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2vw,26px);
+  padding:clamp(20px,2.6vw,28px);border-radius:var(--r-md);
+  background:oklch(100% 0 0 / .1);
+  backdrop-filter:blur(18px) saturate(1.25);
+  border:1px solid oklch(100% 0 0 / .2);
+  transition:background .3s, transform .3s cubic-bezier(.16,1,.3,1);
+}
+.spec-item:hover{background:oklch(100% 0 0 / .16);transform:translateY(-3px)}
+.spec-icon{width:36px;height:36px;color:oklch(84% 0.05 240);flex-shrink:0;margin-top:2px}
+.spec-icon svg{width:100%;height:100%;display:block}
+.spec-item h3{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.8vw,22px);line-height:1.3;margin-bottom:6px;color:oklch(97% 0.008 240)}
+.spec-item p{font-size:14.5px;line-height:1.6;color:oklch(86% 0.015 240);max-width:46ch}
+@media (max-width:860px){.spec-list{grid-template-columns:1fr}}
+
+/* ---------- TFP method ---------- */
+.tfp-lead{
+  font-family:var(--serif);font-size:clamp(20px,2.3vw,29px);line-height:1.5;
+  max-width:30em;margin-bottom:clamp(36px,6vh,64px);
+}
+.tfp-lead em{font-style:normal;color:var(--hse)}
+.tfp-scheme{
+  display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:clamp(16px,2.5vw,36px);align-items:start;
+  margin-bottom:clamp(40px,7vh,72px);
+  padding:clamp(24px,3.5vw,48px);border-radius:var(--r-lg);
+}
+.tfp-stage svg{width:74px;height:74px;color:var(--hse-soft);margin-bottom:14px}
+.tfp-stage h3{font-size:16.5px;font-weight:600;margin-bottom:6px;line-height:1.35}
+.tfp-stage p{font-size:14.5px;color:var(--ink-soft);line-height:1.55;max-width:34ch}
+.tfp-arrow{font-family:var(--serif);font-size:28px;color:var(--hse);align-self:center;line-height:1}
+@media (max-width:860px){
+  .tfp-scheme{grid-template-columns:1fr;gap:14px}
+  .tfp-arrow{transform:rotate(90deg);justify-self:center}
+}
+.tfp-facts{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,44px);
+  margin-bottom:clamp(40px,7vh,72px);
+}
+.tfp-fact{border-top:1px solid var(--line);padding-top:clamp(14px,2vh,20px)}
+.tfp-fact-key{font-family:var(--serif);font-size:clamp(19px,1.9vw,24px);color:var(--hse);margin-bottom:6px}
+.tfp-fact p{font-size:14px;color:var(--ink-soft);max-width:30ch;line-height:1.55}
+.tfp-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,80px)}
+.tfp-steps{list-style:none}
+.tfp-steps li{
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2vw,26px);align-items:start;
+  padding:clamp(16px,2.4vh,22px) 0;border-top:1px solid var(--line);
+}
+.tfp-steps li:last-child{border-bottom:1px solid var(--line)}
+.tfp-steps .step-icon{width:34px;height:34px;color:var(--hse-soft);margin-top:3px}
+.tfp-steps .step-icon svg{width:100%;height:100%;display:block}
+.tfp-steps h3{font-size:16.5px;font-weight:600;margin-bottom:4px;line-height:1.4}
+.tfp-steps p{font-size:15px;color:var(--ink-soft);max-width:52ch}
+.tfp-quals{list-style:none}
+.tfp-quals li{
+  padding:12px 0;font-size:15px;line-height:1.55;color:var(--ink-soft);
+  border-top:1px solid var(--line);
+}
+.tfp-quals li:last-child{border-bottom:1px solid var(--line)}
+.tfp-quals b{color:var(--ink);font-weight:600}
+.tfp-note{font-size:13px;color:var(--ink-faint);margin-top:var(--s-sm);max-width:44ch}
+@media (max-width:860px){.tfp-cols{grid-template-columns:1fr}.tfp-facts{grid-template-columns:1fr;gap:16px}}
+
+/* ---------- teaching ---------- */
+.teach-band{position:relative;overflow:clip;background:color-mix(in srgb, white 34%, transparent)}
+.teach-grid-top{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,80px);margin-bottom:clamp(36px,6vh,60px)}
+.teach-grid-top .lede{color:var(--ink-soft);max-width:56ch}
+.teach-grid-top .lede strong{color:var(--ink);font-weight:600}
+.teach-courses{list-style:none;margin-top:var(--s-md)}
+.teach-courses li{
+  padding:12px 0;font-size:15px;border-top:1px solid var(--line);line-height:1.5;
+  display:grid;grid-template-columns:1fr auto;gap:var(--s-md);
+}
+.teach-courses li:last-child{border-bottom:1px solid var(--line)}
+.teach-courses .kind{color:var(--ink-faint);font-size:13.5px;white-space:nowrap;padding-top:2px}
+.teach-award{padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink-soft);line-height:1.55}
+.teach-award:last-child{border-bottom:1px solid var(--line)}
+.teach-award b{color:var(--ink);font-weight:600}
+
+/* mosaic (семинары + преподавание) */
+.mosaic{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.2vw,16px);
+  grid-auto-rows:clamp(120px,14vw,190px);grid-auto-flow:dense;
+}
+.mosaic button{border:none;padding:0;cursor:zoom-in;border-radius:14px;overflow:hidden;position:relative;
+  border:1px solid var(--glass-border);box-shadow:var(--shadow);background:var(--glass-strong)}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.mosaic button:hover img{transform:scale(1.05)}
+.mosaic .wide{grid-column:span 2}
+.mosaic .tall{grid-row:span 2}
+.mosaic.collapsed button:nth-of-type(n+7){display:none}
+.mosaic-toggle{
+  display:block;margin:clamp(18px,3vh,28px) auto 0;
+  font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink);
+  background:var(--glass-strong);border:1px solid var(--glass-border);
+  backdrop-filter:blur(12px);cursor:pointer;
+  padding:13px 30px;border-radius:100px;
+  transition:border-color .25s, color .25s;
+}
+.mosaic-toggle:hover{border-color:var(--hse);color:var(--hse)}
+@media (max-width:860px){.mosaic{grid-template-columns:repeat(2,1fr)}}
+
+/* education */
+.edu-wrap{display:grid;grid-template-columns:1fr .62fr;gap:clamp(28px,5vw,72px);align-items:start}
+.edu-list{list-style:none}
+.edu-item{
+  display:grid;grid-template-columns:150px 1fr;gap:clamp(18px,3vw,44px);
+  padding:clamp(18px,2.8vh,26px) 0;border-top:1px solid var(--line);
+}
+.edu-list .edu-item:last-child{border-bottom:1px solid var(--line)}
+.edu-years{font-family:var(--serif);font-size:clamp(16px,1.6vw,20px);color:var(--hse);letter-spacing:.02em;white-space:nowrap;padding-top:2px}
+.edu-item h3{font-size:16.5px;font-weight:600;line-height:1.4;margin-bottom:5px}
+.edu-item p{font-size:14.5px;color:var(--ink-soft);max-width:52ch}
+@media (max-width:640px){.edu-item{grid-template-columns:1fr;gap:6px}}
+.edu-photo{position:sticky;top:100px}
+.edu-photo img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 12%;
+  border-radius:var(--r-lg);border:1px solid var(--glass-border);
+  box-shadow:0 24px 60px -16px oklch(32% 0.08 255 / .28);
+}
+.creds-head{margin-top:clamp(32px,5vh,52px)}
+.creds{list-style:none;columns:2;column-gap:clamp(24px,4vw,56px)}
+.creds li{
+  padding:11px 0;font-size:15px;color:var(--ink);line-height:1.5;
+  border-top:1px solid var(--line);break-inside:avoid;
+}
+@media (max-width:860px){.edu-wrap{grid-template-columns:1fr}.edu-photo{position:static;max-width:340px}.creds{columns:1}}
+
+/* certificates strip */
+.cert-note{color:var(--ink-soft);max-width:56ch;margin:-24px 0 clamp(28px,4vh,40px);font-size:clamp(15px,1.4vw,17px)}
+.cert-strip{
+  display:flex;gap:clamp(12px,1.5vw,18px);
+  overflow-x:auto;padding:10px 4px 22px;
+  scroll-snap-type:x proximity;
+  scrollbar-width:thin;scrollbar-color:var(--hse-soft) transparent;
+}
+.cert-strip::-webkit-scrollbar{height:8px}
+.cert-strip::-webkit-scrollbar-thumb{background:color-mix(in srgb, var(--hse) 35%, transparent);border-radius:100px}
+.cert-item{
+  flex:0 0 auto;scroll-snap-align:start;height:236px;cursor:zoom-in;
+  border-radius:14px;overflow:hidden;padding:6px;
+  background:var(--glass-strong);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--shadow);
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.cert-item:hover{transform:translateY(-5px)}
+.cert-item img{height:100%;width:auto;border-radius:9px;display:block}
+.cert-hint{font-size:13px;color:var(--ink-faint);margin-top:6px}
+
+/* seminars band */
+.sem-band{position:relative;overflow:clip}
+.sem-band::before{
+  content:'';position:absolute;inset:0;
+  background:url('img/art/monet-seine-sunset.jpg') center/cover no-repeat;
+  filter:blur(60px) saturate(1.1);opacity:.34;transform:scale(1.2);
+}
+.sem-band .sec{position:relative;z-index:1}
+.sem-note{color:var(--ink-soft);max-width:56ch;margin:-24px 0 clamp(28px,4vh,40px);font-size:clamp(15px,1.4vw,17px)}
+
+/* lightbox */
+.lb{
+  position:fixed;inset:0;z-index:100;display:none;
+  align-items:center;justify-content:center;
+  background:oklch(20% 0.03 258 / .78);
+  backdrop-filter:blur(16px) saturate(1.2);
+  padding:clamp(12px,3vw,40px);
+}
+.lb.open{display:flex}
+.lb img{
+  max-width:min(94vw,1100px);max-height:88vh;object-fit:contain;
+  border-radius:12px;box-shadow:0 30px 80px oklch(10% 0.02 258/.5);
+  background:white;
+}
+.lb-btn{
+  position:fixed;border:none;cursor:pointer;z-index:101;
+  width:48px;height:48px;border-radius:50%;
+  background:oklch(100% 0 0/.16);backdrop-filter:blur(12px);
+  border:1px solid oklch(100% 0 0/.28);
+  color:white;font-size:20px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .25s;
+}
+.lb-btn:hover{background:oklch(100% 0 0/.3)}
+.lb-close{top:20px;right:20px}
+.lb-prev{left:16px;top:50%;transform:translateY(-50%)}
+.lb-next{right:16px;top:50%;transform:translateY(-50%)}
+.lb-count{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  color:oklch(92% 0.01 240);font-size:14px;letter-spacing:.06em;
+  padding:8px 18px;border-radius:100px;
+  background:oklch(100% 0 0/.12);backdrop-filter:blur(12px);
+  border:1px solid oklch(100% 0 0/.2);
+}
+
+/* contact: тёмная секция поверх «Заката на Сене» */
+.contact-band{position:relative;overflow:clip}
+.contact-band::before{
+  content:'';position:absolute;inset:0;
+  background:url('img/art/monet-seine-sunset.jpg') center/cover no-repeat;
+  filter:blur(8px) saturate(1.05);transform:scale(1.06);
+}
+.contact-band::after{
+  content:'';position:absolute;inset:0;
+  background:oklch(30% 0.06 255 / .72);
+  backdrop-filter:blur(2px);
+}
+.contact-band .sec{position:relative;z-index:1}
+.contact-band h2{color:oklch(97% 0.008 240);margin-bottom:var(--s-md)}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,64px);
+  align-items:stretch;
+}
+.contact-note{color:oklch(86% 0.015 240);max-width:44ch;margin-bottom:clamp(24px,4vh,36px)}
+.contact-rows{list-style:none;font-size:16px;margin-top:clamp(24px,4vh,36px)}
+.contact-rows li{
+  display:grid;grid-template-columns:110px 1fr;gap:var(--s-md);
+  padding:15px 0;border-top:1px solid oklch(100% 0 0 / .22);
+}
+.contact-rows li:last-child{border-bottom:1px solid oklch(100% 0 0 / .22)}
+.contact-key{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:oklch(78% 0.02 240);padding-top:4px}
+.contact-rows li > span:last-child{color:oklch(96% 0.008 240)}
+.contact-rows a{color:oklch(96% 0.008 240);text-decoration:none;font-weight:500;transition:color .25s}
+.contact-rows a:hover{color:oklch(80% 0.06 245)}
+.map-wrap{
+  display:flex;flex-direction:column;
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid oklch(100% 0 0 / .25);box-shadow:var(--shadow);
+  background:oklch(100% 0 0 / .1);backdrop-filter:blur(14px);
+}
+.map-wrap iframe{display:block;width:100%;flex:1;min-height:320px;border:0;filter:saturate(.9)}
+.map-link{
+  display:block;padding:12px 20px;font-size:14px;color:oklch(90% 0.012 240);
+  text-decoration:none;transition:color .25s;
+  background:oklch(100% 0 0 / .1);backdrop-filter:blur(12px);
+  border-top:1px solid oklch(100% 0 0 / .2);
+}
+.map-link:hover{color:white}
+@media (max-width:860px){
+  .contact-grid{grid-template-columns:1fr}
+  .map-wrap iframe{min-height:300px;height:340px;flex:none}
+}
+
+footer{
+  max-width:var(--wrap);margin:0 auto;
+  padding:clamp(20px,3.5vh,36px) clamp(16px,3vw,32px);
+  display:flex;justify-content:space-between;gap:var(--s-md);flex-wrap:wrap;
+  font-size:13px;color:var(--ink-faint);
+}
+</style>
+</head>
+<body>
+
+<div class="ambient" aria-hidden="true"></div>
+
+<header>
+  <nav class="nav glass">
+    <a class="nav-name" href="#top">Эльза <em>Насырова</em></a>
+    <ul class="nav-links">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#spec">С чем я работаю</a></li>
+      <li><a href="#tfp">Метод</a></li>
+      <li><a href="#teaching">Преподавание</a></li>
+      <li><a href="#edu">Образование</a></li>
+      <li><a href="#certs">Сертификаты</a></li>
+      <li><a href="#seminars">Семинары</a></li>
+      <li class="cta-li"><a class="nav-cta" href="#contact">Записаться</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-panel glass">
+      <div>
+        <h1 class="rv">Психотерапия травмы и&nbsp;расстройств личности</h1>
+        <p class="hero-lede rv">Меня зовут Эльза Насырова. Я&nbsp;клинический психолог с&nbsp;25-летней практикой, <strong>доцент департамента психологии НИУ&nbsp;ВШЭ</strong> и&nbsp;аккредитованный психолог-консультант Европейской ассоциации консультирования. Работаю со&nbsp;взрослыми и&nbsp;подростками с&nbsp;последствиями травмы, расстройствами личности, тревогой и&nbsp;трудностями в&nbsp;отношениях.</p>
+        <div class="hero-actions rv">
+          <a class="btn btn-primary" href="#contact">Записаться на консультацию</a>
+          <a class="btn btn-ghost" href="#about">Узнать обо мне</a>
+        </div>
+      </div>
+      <figure class="hero-figure rv">
+        <img src="img/portrait-sofa.jpg" alt="Эльза Насырова, клинический психолог">
+        <figcaption><b>Эльза Фаридовна Насырова</b><span>Москва</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat rv"><div class="stat-num">25 лет</div><div class="stat-label">клинической практики, из них 10&nbsp;лет в&nbsp;кризисном центре</div></div>
+    <div class="stat rv"><div class="stat-num">16 000+</div><div class="stat-label">часов частной психотерапевтической практики</div></div>
+    <div class="stat rv"><div class="stat-num">НИУ ВШЭ</div><div class="stat-label">доцент департамента психологии, лучший преподаватель 2024–2025</div></div>
+    <div class="stat rv"><div class="stat-num">2 гранта</div><div class="stat-label">государственные гранты при поддержке Президента&nbsp;РФ</div></div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>Обо мне</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text rv">
+          <p>Моя практика началась в&nbsp;2001&nbsp;году в&nbsp;кризисном центре. Десять лет я&nbsp;работала с&nbsp;детьми и&nbsp;подростками, пережившими насилие и&nbsp;жестокое обращение. Эти годы сделали <strong>терапию травмы и&nbsp;её&nbsp;последствий</strong> моей главной специализацией.</p>
+          <p>Частную практику в&nbsp;психодинамическом подходе веду с&nbsp;2003&nbsp;года, с&nbsp;2011&nbsp;года работаю в&nbsp;модальности транзактного анализа, а&nbsp;с&nbsp;2023&nbsp;года в&nbsp;терапии, фокусированной на&nbsp;переносе (TFP). За&nbsp;годы работы накопилось более 16&nbsp;000&nbsp;часов практики со&nbsp;взрослыми, детьми, подростками, парами и&nbsp;семьями.</p>
+          <p>Клиническую работу я&nbsp;соединяю с&nbsp;академической. Преподаю в&nbsp;НИУ&nbsp;ВШЭ, исследую клиническую персонологию, психологию травмы и&nbsp;расстройств личности, супервизирую практикующих психологов.</p>
+          <p class="pull">«Психоаналитическая психотерапия и психоанализ, вероятно, это те методы, которые способствуют <span>самым лучшим изменениям при серьёзных расстройствах личности</span>».</p>
+          <p class="pull-author">Отто Кернберг</p>
+        </div>
+        <aside class="rv">
+          <h3 class="side-label">Научные интересы</h3>
+          <ul class="plain-list">
+            <li>Персонология</li>
+            <li>Патопсихология</li>
+            <li>Диагностика и психотерапия расстройств личности</li>
+            <li>Психология травмы и детства</li>
+            <li>Подростковая психотерапия</li>
+            <li>Супервизия психоаналитического консультирования</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALIZATION -->
+  <section id="spec" class="spec-band">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>С чем я работаю</h2>
+      </div>
+      <p class="spec-intro rv">Ко&nbsp;мне обращаются после тяжёлых событий, в&nbsp;затяжной тревоге, в&nbsp;кризисе отношений, когда справляться самостоятельно становится трудно. Первая встреча посвящена диагностике. Мы&nbsp;вместе определяем, что происходит и&nbsp;какой формат работы подойдёт именно вам.</p>
+      <ul class="spec-list">
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><path d="M13 6.5 L17 13 L13.5 18 L17.5 25"/></svg></span>
+          <div><h3>Травма и её последствия</h3><p>Последствия физического, психологического и сексуализированного насилия, жестокого обращения, тяжёлых событий прошлого.</p></div>
+        </li>
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 6 A10 10 0 0 1 25.4 19.4"/><path d="M23.7 22.4 A10 10 0 0 1 8.3 22.4"/><path d="M4.9 18.4 A10 10 0 0 1 12.5 5.2"/></svg></span>
+          <div><h3>Расстройства личности</h3><p>Диагностика и длительная психотерапия личностных расстройств по модели Отто Кернберга, в модальности TFP.</p></div>
+        </li>
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 16 a1.8 1.8 0 0 1 1.8 1.8 a3.6 3.6 0 0 1 -7.2 0 a5.4 5.4 0 0 1 10.8 0 a7.2 7.2 0 0 1 -14.4 0 a9 9 0 0 1 18 0"/></svg></span>
+          <div><h3>Тревога и фобии</h3><p>Тревожные расстройства, панические состояния, страхи, которые сужают жизнь и мешают решениям.</p></div>
+        </li>
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 27 V13"/><path d="M16 17 C16 12 12 9 7 9 C7 14 11 17 16 17 Z"/><path d="M16 13 C16 9.5 19 7 23 7 C23 11 20 13 16 13 Z"/></svg></span>
+          <div><h3>Подростковая психотерапия</h3><p>Работа с детьми и подростками от 5 до 18 лет. Кризисы взросления, самоповреждение, трудности идентичности.</p></div>
+        </li>
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="13" cy="14" r="8"/><circle cx="23" cy="22" r="4.5"/></svg></span>
+          <div><h3>Детско-родительские отношения</h3><p>Конфликты, потеря контакта с ребёнком, сложные периоды семьи. Работаю и с родителями, и с детьми.</p></div>
+        </li>
+        <li class="spec-item rv">
+          <span class="spec-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="16" r="7"/><circle cx="20" cy="16" r="7"/></svg></span>
+          <div><h3>Семейная и супружеская терапия</h3><p>Кризисы пары, повторяющиеся конфликты, решения о будущем отношений.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TFP METHOD -->
+  <section id="tfp">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>Мой метод: терапия, фокусированная на&nbsp;переносе</h2>
+      </div>
+      <p class="tfp-lead rv">TFP, Transference-Focused Psychotherapy, это современный метод психоаналитической психотерапии для лечения тяжёлых расстройств личности, <em>прежде всего пограничного и&nbsp;нарциссического</em>.</p>
+
+      <div class="tfp-scheme glass rv">
+        <div class="tfp-stage">
+          <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="22" cy="22" r="15"/>
+            <path d="M22 7 L19 14 L25 21 L19 29 L22 37"/>
+            <text x="13" y="26" font-size="12" fill="currentColor" stroke="none" text-anchor="middle" font-family="Georgia,serif">+</text>
+            <text x="30" y="26" font-size="13" fill="currentColor" stroke="none" text-anchor="middle" font-family="Georgia,serif">−</text>
+          </svg>
+          <h3>Расщеплённый внутренний мир</h3>
+          <p>При тяжёлых расстройствах личности образы себя и других разделены на «только хорошие» и «только плохие».</p>
+        </div>
+        <span class="tfp-arrow" aria-hidden="true">→</span>
+        <div class="tfp-stage">
+          <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="15" cy="22" r="10"/>
+            <circle cx="29" cy="22" r="10"/>
+            <text x="12" y="26" font-size="10.5" fill="currentColor" stroke="none" text-anchor="middle" font-family="Golos Text,sans-serif">П</text>
+            <text x="32" y="26" font-size="10.5" fill="currentColor" stroke="none" text-anchor="middle" font-family="Golos Text,sans-serif">Т</text>
+          </svg>
+          <h3>Перенос в отношениях с терапевтом</h3>
+          <p>Привычные паттерны оживают прямо на сессии, здесь и сейчас, где их можно увидеть, назвать и исследовать.</p>
+        </div>
+        <span class="tfp-arrow" aria-hidden="true">→</span>
+        <div class="tfp-stage">
+          <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="22" cy="22" r="15"/>
+            <circle cx="22" cy="22" r="8" stroke="none" fill="currentColor" fill-opacity=".14"/>
+          </svg>
+          <h3>Интеграция личности</h3>
+          <p>Разрозненные части соединяются в целостный, реалистичный образ себя и других людей.</p>
+        </div>
+      </div>
+
+      <div class="tfp-facts">
+        <div class="tfp-fact rv"><div class="tfp-fact-key">Отто Кернберг</div><p>автор метода, один из крупнейших психоаналитиков современности</p></div>
+        <div class="tfp-fact rv"><div class="tfp-fact-key">Доказательность</div><p>эффективность подтверждена рандомизированными контролируемыми исследованиями</p></div>
+        <div class="tfp-fact rv"><div class="tfp-fact-key">Объектные отношения</div><p>психодинамическая модель, лежащая в основе метода</p></div>
+      </div>
+      <div class="tfp-cols">
+        <div class="rv">
+          <h3 class="side-label">Как устроена терапия</h3>
+          <ol class="tfp-steps">
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="6" y="6" width="20" height="20" rx="4"/><path d="M11 13 H21"/><path d="M11 18 H21"/><path d="M11 23 H17"/></svg></span>
+              <div><h3>Структура и рамка</h3><p>Чёткая последовательность шагов лечения и оговорённые временные рамки отличают TFP от классического психоанализа.</p></div>
+            </li>
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="14" cy="18" r="9"/><circle cx="14" cy="18" r="3.5"/><path d="M14 18 L27 5"/><path d="M27 5 v5 M27 5 h-5"/></svg></span>
+              <div><h3>Цель шире, чем снятие симптомов</h3><p>Лечение меняет саму личность. Улучшается повседневное функционирование, растёт удовлетворение от отношений и работы.</p></div>
+            </li>
+            <li>
+              <span class="step-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="16" r="8"/><path d="M16 3 v3.5 M16 25.5 V29 M3 16 h3.5 M25.5 16 H29 M6.8 6.8 l2.5 2.5 M22.7 22.7 l2.5 2.5 M25.2 6.8 l-2.5 2.5 M9.3 22.7 l-2.5 2.5"/></svg></span>
+              <div><h3>Результат</h3><p>Стабильное, реалистичное и целостное восприятие себя и других людей, за которым следуют более тёплые отношения и эффективная адаптация.</p></div>
+            </li>
+          </ol>
+        </div>
+        <aside class="rv">
+          <h3 class="side-label">Моя квалификация в TFP</h3>
+          <ul class="tfp-quals">
+            <li><b>Диплом о профессиональной переподготовке</b> «Психотерапия, фокусированная на переносе», 256 академических часов, с правом ведения деятельности в сфере ТФП (МИРЛ, 2024)</li>
+            <li><b>Член РОТФП</b>, Русскоязычного общества терапии, фокусированной на переносе, региональной группы развития ISTFP</li>
+            <li><b>Кандидат TFP-подготовки</b> к международной сертификации ISTFP</li>
+          </ul>
+          <p class="tfp-note">ISTFP: International Society of Transference-Focused Psychotherapy, международное общество ТФП.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching" class="teach-band">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>Преподавание</h2>
+      </div>
+      <div class="teach-grid-top">
+        <div class="rv">
+          <p class="lede">С&nbsp;2024 года я&nbsp;<strong>доцент департамента психологии НИУ&nbsp;ВШЭ</strong>, преподаю в&nbsp;Центре фундаментальной и&nbsp;консультативной персонологии факультета социальных наук. Веду курсы магистратуры:</p>
+          <ul class="teach-courses">
+            <li><span>Психология личностных расстройств</span><span class="kind">курс</span></li>
+            <li><span>Психотерапия личностных расстройств</span><span class="kind">курс</span></li>
+            <li><span>«Клиническая персонология»</span><span class="kind">семинар наставника</span></li>
+          </ul>
+        </div>
+        <aside class="rv">
+          <h3 class="side-label">Признание</h3>
+          <p class="teach-award"><b>Лучший преподаватель 2024–2025</b> по итогам студенческого голосования НИУ ВШЭ</p>
+          <p class="teach-award"><b>Благодарность</b> департамента психологии НИУ ВШЭ, 2025</p>
+          <p class="teach-award"><b>2 государственных гранта</b> при поддержке Президента РФ</p>
+        </aside>
+      </div>
+      <div class="mosaic rv" id="teachGrid"></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="edu">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>Образование и квалификация</h2>
+      </div>
+      <div class="edu-wrap">
+        <div>
+          <ul class="edu-list">
+            <li class="edu-item rv">
+              <span class="edu-years">1998–2003</span>
+              <div><h3>Факультет психологии, МГОПУ им. М.А. Шолохова</h3><p>Специалитет по психологии, квалификация «Психолог».</p></div>
+            </li>
+            <li class="edu-item rv">
+              <span class="edu-years">2003–2004</span>
+              <div><h3>Клиническая психология</h3><p>Профессиональная переподготовка, квалификация клинического психолога.</p></div>
+            </li>
+            <li class="edu-item rv">
+              <span class="edu-years">2011–2017</span>
+              <div><h3>Российско-британская программа по консультированию и психотерапии</h3><p>950 часов обучения и 200 часов супервизии. Европейская сертификация ЕАТА в модальности транзактного анализа.</p></div>
+            </li>
+            <li class="edu-item rv">
+              <span class="edu-years">2018–2019</span>
+              <div><h3>Расстройства пищевого поведения</h3><p>Специализированная программа, 50 часов.</p></div>
+            </li>
+            <li class="edu-item rv">
+              <span class="edu-years">2017–2026</span>
+              <div><h3>Семинары Отто Кернберга</h3><p>120 часов диагностики и психотерапии расстройств личности, включая терапию, фокусированную на переносе.</p></div>
+            </li>
+            <li class="edu-item rv">
+              <span class="edu-years">2022–2024</span>
+              <div><h3>Международный институт расстройств личности (МИРЛ)</h3><p>Профессиональная переподготовка «Психотерапия, фокусированная на переносе», 256 академических часов. Стратегии и техники ТФП, лечение пограничного расстройства, ТФП с подростками, супервизии. Диплом с правом ведения профессиональной деятельности, итоговая аттестация на «отлично».</p></div>
+            </li>
+          </ul>
+          <div class="creds-head rv">
+            <h3 class="side-label">Членства и аккредитации</h3>
+            <ul class="creds">
+              <li>Аккредитованный психолог-консультант Европейской ассоциации консультирования</li>
+              <li>Член СОТА, Санкт-Петербургской организации транзактного анализа</li>
+              <li>Член РОТФП, региональной группы развития ISTFP</li>
+            </ul>
+          </div>
+        </div>
+        <figure class="edu-photo rv">
+          <img src="img/portrait-window.jpg" alt="Эльза Насырова">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certs">
+    <div class="sec" style="padding-top:0">
+      <div class="sec-head rv">
+        <h2>Сертификаты и дипломы</h2>
+      </div>
+      <p class="cert-note rv">Дипломы, удостоверения и сертификаты за 25 лет обучения, от специалитета и клинической переподготовки до семинаров Отто Кернберга, Нэнси Мак-Вильямс и европейской сертификации ЕАТА. Нажмите на документ, чтобы рассмотреть его.</p>
+      <div class="cert-strip rv" id="certStrip"></div>
+      <p class="cert-hint">Листайте ленту вбок: в коллекции 82 документа</p>
+    </div>
+  </section>
+
+  <!-- SEMINARS -->
+  <section id="seminars" class="sem-band">
+    <div class="sec">
+      <div class="sec-head rv">
+        <h2>Семинары и мастер-классы</h2>
+      </div>
+      <p class="sem-note rv">Помимо университета я провожу семинары и мастер-классы для психологов, студентов и специалистов помогающих профессий, включая арт-терапевтические группы.</p>
+      <div class="mosaic collapsed rv" id="semGrid"></div>
+      <button class="mosaic-toggle" data-for="semGrid" type="button">Показать все фотографии</button>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-band">
+    <div class="sec">
+      <div class="contact-grid">
+        <div class="rv">
+          <div class="sec-head" style="margin-bottom:var(--s-md)">
+            <h2>Записаться на консультацию</h2>
+          </div>
+          <p class="contact-note">Напишите или позвоните, я отвечу лично.</p>
+          <a class="btn btn-primary" href="tel:+79104077834">+7 (910) 407-78-34</a>
+          <ul class="contact-rows">
+            <li><span class="contact-key">Email</span><a href="mailto:elza.nasyrova@gmail.com">elza.nasyrova@gmail.com</a></li>
+            <li><span class="contact-key">Кабинет</span><span>Москва, ул. Барклая, 13с1</span></li>
+            <li><span class="contact-key">Метро</span><span>Багратионовская</span></li>
+          </ul>
+        </div>
+        <div class="map-wrap rv">
+          <iframe src="https://yandex.ru/map-widget/v1/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%91%D0%B0%D1%80%D0%BA%D0%BB%D0%B0%D1%8F%2C%2013%D1%811&z=16" loading="lazy" title="Карта. Москва, улица Барклая, 13с1" allowfullscreen></iframe>
+          <a class="map-link" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%91%D0%B0%D1%80%D0%BA%D0%BB%D0%B0%D1%8F%2C%2013%D1%811" target="_blank" rel="noopener">Построить маршрут в Яндекс Картах</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© Эльза Насырова, клинический психолог</span>
+  <span>Все права защищены</span>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" role="dialog" aria-label="Просмотр изображения">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Назад">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Вперёд">›</button>
+  <span class="lb-count" id="lbCount"></span>
+</div>
+
+<script>
+/* ---- галереи ---- */
+const CERT_COUNT = 82;
+const pad = n => String(n).padStart(2,'0');
+const certStrip = document.getElementById('certStrip');
+const certFull = [];
+for (let i = 1; i <= CERT_COUNT; i++) {
+  const full = `img/certs/cert-${pad(i)}.jpg`;
+  certFull.push(full);
+  const b = document.createElement('button');
+  b.className = 'cert-item';
+  b.innerHTML = `<img src="img/certs/thumbs/cert-${pad(i)}.jpg" loading="lazy" alt="Сертификат ${i}">`;
+  b.addEventListener('click', () => openLb(certFull, i-1));
+  certStrip.appendChild(b);
+}
+function buildMosaic(el, prefix, ids, wide){
+  const full = ids.map(i => `img/${prefix}-${pad(i)}.jpg`);
+  ids.forEach((id, k) => {
+    const b = document.createElement('button');
+    b.className = wide.includes(id) ? 'wide' : '';
+    b.innerHTML = `<img src="${full[k]}" loading="lazy" alt="Фото ${k+1}">`;
+    b.addEventListener('click', () => openLb(full, k));
+    el.appendChild(b);
+  });
+}
+/* отобраны только информативные кадры */
+buildMosaic(document.getElementById('semGrid'), 'seminars/sem',
+  [1,3,9,11,5,8,7,12,13,14,10,17,16,18,19,2], [1,11,7,14]);
+buildMosaic(document.getElementById('teachGrid'), 'teaching/teach',
+  [2,5,1,6,3,7], [2,5]);
+
+/* сворачивание галерей */
+document.querySelectorAll('.mosaic-toggle').forEach(t => {
+  const grid = document.getElementById(t.dataset.for);
+  t.addEventListener('click', () => {
+    const collapsed = grid.classList.toggle('collapsed');
+    t.textContent = collapsed ? 'Показать все фотографии' : 'Свернуть';
+    if (collapsed) grid.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+/* ---- лайтбокс ---- */
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lbCount = document.getElementById('lbCount');
+let lbSet = [], lbIdx = 0;
+function openLb(set, idx){ lbSet = set; lbIdx = idx; renderLb(); lb.classList.add('open'); document.body.style.overflow='hidden'; }
+function renderLb(){ lbImg.src = lbSet[lbIdx]; lbCount.textContent = (lbIdx+1) + ' / ' + lbSet.length; }
+function closeLb(){ lb.classList.remove('open'); lbImg.src=''; document.body.style.overflow=''; }
+function step(d){ lbIdx = (lbIdx + d + lbSet.length) % lbSet.length; renderLb(); }
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+document.getElementById('lbNext').addEventListener('click', () => step(1));
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') step(-1);
+  if (e.key === 'ArrowRight') step(1);
+});
+
+/* ---- появление при скролле ---- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 70 + 'ms';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
